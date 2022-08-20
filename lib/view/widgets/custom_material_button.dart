@@ -6,8 +6,9 @@ class CustomMaterialButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget? child;
   final Color? color;
+  final double? verticalPadding;
 
-  const CustomMaterialButton({Key? key,required this.onPressed, this.child, this.color}) : super(key: key);
+  const CustomMaterialButton({Key? key,required this.onPressed, this.child, this.color, this.verticalPadding}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,8 @@ class CustomMaterialButton extends StatelessWidget {
       ),
       minWidth: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.01
+        vertical: verticalPadding ?? MediaQuery.of(context).size.height * 0.01,
+        horizontal: MediaQuery.of(context).size.width * 0.02
       ),
 
       child: child,

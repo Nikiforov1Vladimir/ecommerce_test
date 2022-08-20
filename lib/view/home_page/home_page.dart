@@ -105,13 +105,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.04
             ),
-            child: GNav(
+            child: const GNav(
 
               backgroundColor: Colors.transparent,
               color: Colors.white,
-              activeColor: appOrange,
+              activeColor: Colors.white,
 
-              tabs: const [
+              tabs: [
                 GButton(
                   icon: Icons.home,
                   text: 'Home',
@@ -122,9 +122,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   text: 'Cart',
                 ),
 
-                GButton(icon: Icons.favorite_border),
+                GButton(
+                  icon: Icons.favorite_border,
+                  text: 'Favorites',
+                ),
 
-                GButton(icon: Icons.person)
+                GButton(
+                  icon: Icons.person,
+                  text: 'Profile',
+                )
               ],
             ),
           ),

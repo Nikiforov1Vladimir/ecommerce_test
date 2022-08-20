@@ -17,6 +17,7 @@ dependencies:
   auto_size_text: any
   carousel_slider: any
   google_nav_bar: any
+  buttons_tabbar: any
 
 dev_dependencies:
   flutter_test:

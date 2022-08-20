@@ -14,7 +14,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: appGrey,
-      floating: true,
+      pinned: true,
       elevation: 2,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,

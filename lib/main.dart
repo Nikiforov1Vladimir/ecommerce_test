@@ -1,4 +1,5 @@
 import 'package:ecommerce_test/core/theme/theme_class.dart';
+import 'package:ecommerce_test/view/details_screen/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'view/home_page/home_page.dart';

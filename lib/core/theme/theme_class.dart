@@ -10,15 +10,25 @@ class AppTheme{
     fontFamily: 'Mark-Pro',
 
     tabBarTheme: const TabBarTheme(
-      indicatorSize: TabBarIndicatorSize.label,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: UnderlineTabIndicator(
+        borderSide: BorderSide(
+          color: appOrange,
+          width: 4
+        )
+      ),
       unselectedLabelStyle: TextStyle(
-        color: appBlue
+        color: Colors.grey,
+        fontSize: 18,
+        fontWeight: FontWeight.w400
       ),
-      unselectedLabelColor: appBlue,
+      unselectedLabelColor: Colors.grey,
       labelStyle: TextStyle(
-        color: appOrange
+        color: appBlue,
+        fontWeight: FontWeight.bold,
+        fontSize: 18
       ),
-      labelColor: appOrange
+      labelColor: appBlue
     ),
 
     appBarTheme: const AppBarTheme(
@@ -53,6 +63,23 @@ class AppTheme{
         fontSize: 20,
         fontWeight: FontWeight.w700
       ),
+      headline3: TextStyle(
+          color: appBlue,
+          fontSize: 24,
+          fontWeight: FontWeight.w600
+      ),
+      headline4: TextStyle(
+        color: appBlue,
+        fontSize: 16,
+        fontWeight: FontWeight.w600
+      ),
+
+      //bold bodyText for buttons
+      button: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+        color: Colors.white
+      )
 
     ),
 
