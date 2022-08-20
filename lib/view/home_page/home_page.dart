@@ -1,11 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
+import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
+import 'package:ecommerce_test/view/details_screen/details_screen.dart';
 import 'package:ecommerce_test/view/home_page/widgets/carousel_component.dart';
 import 'package:ecommerce_test/view/home_page/widgets/custom_sliver_app_bar.dart';
 import 'package:ecommerce_test/view/home_page/widgets/title_row.dart';
 import 'package:ecommerce_test/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_test/view/widgets/phone_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+
+import 'widgets/app_carousel.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -43,10 +50,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   TitleRow(
                       title: 'Select Category',
                       buttonText: 'view all',
-                      onPressed: (){}
+                      onPressed: ()
+
+                      // НЕ ЗАБЫТЬ УДАЛИТЬ
+
+                      => Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>CartScreen()))
                   ),
 
-                  CustomTextField(),
+                  CustomTextField(
+                    hintText: 'Search',
+                  ),
 
                   TitleRow(
                       title: 'Hot Sales',
@@ -54,22 +67,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       onPressed: (){}
                   ),
 
-                  CarouselSlider(
-                      items: [
-                        CarouselComponent(
-                          image: 'assets/images/test_carousel_image.jpeg',
-                        ),
-                        CarouselComponent(
-                          image: 'assets/images/test_carousel_image.jpeg',
-                        )
-                      ],
-                      options: CarouselOptions(
-                        enableInfiniteScroll: true,
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 30),
-                        autoPlayAnimationDuration: const Duration(seconds: 1),
-                      )
-                  ),
+                  AppCarousel(),
 
                   TitleRow(
                       title: 'Best Seller',
@@ -96,6 +94,40 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
               ),
             )
           ],
+        ),
+        bottomNavigationBar: Container(
+          height: MediaQuery.of(context).size.height * 0.12,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: appBlue
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.04
+            ),
+            child: GNav(
+
+              backgroundColor: Colors.transparent,
+              color: Colors.white,
+              activeColor: appOrange,
+
+              tabs: const [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                ),
+
+                GButton(
+                  icon: Icons.shopping_cart,
+                  text: 'Cart',
+                ),
+
+                GButton(icon: Icons.favorite_border),
+
+                GButton(icon: Icons.person)
+              ],
+            ),
+          ),
         ),
       );
   }

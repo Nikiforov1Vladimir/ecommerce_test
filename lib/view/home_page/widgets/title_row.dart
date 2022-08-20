@@ -14,7 +14,7 @@ class TitleRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.02,
+        vertical: MediaQuery.of(context).size.height * 0.01,
         horizontal: MediaQuery.of(context).size.width * 0.04
       ),
       child: Row(

@@ -52,7 +52,20 @@ class AppTheme{
         color: appBlue,
         fontSize: 20,
         fontWeight: FontWeight.w700
-      )
+      ),
+
+    ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(
+        color: appOrange
+      ),
+      selectedLabelStyle: TextStyle(
+        color: appOrange
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: Colors.white
+      ),
 
     )
 
