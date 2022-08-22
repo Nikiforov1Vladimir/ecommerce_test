@@ -14,12 +14,12 @@ class AppTheme{
       unselectedLabelStyle: const TextStyle(
         color: appBlue,
         fontSize: 12,
-        fontWeight: FontWeight.w400
+        fontWeight: FontWeight.w500
       ),
-      unselectedLabelColor: Colors.grey,
+      unselectedLabelColor: appBlue,
       labelStyle: const TextStyle(
         color: appBlue,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
         fontSize: 12
       ),
       labelColor: appOrange,
