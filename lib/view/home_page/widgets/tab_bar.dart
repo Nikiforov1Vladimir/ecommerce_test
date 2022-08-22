@@ -31,7 +31,28 @@ class _CustomTabBarState extends State<CustomTabBar> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return TabBar(
+
+      indicator: const UnderlineTabIndicator(
+          borderSide: BorderSide(
+              color: Colors.transparent
+          )
+      ),
+
+      unselectedLabelStyle: const TextStyle(
+          color: appBlue,
+          fontSize: 12,
+          fontWeight: FontWeight.w500
+      ),
+      unselectedLabelColor: appBlue,
+      labelStyle: const TextStyle(
+          color: appBlue,
+          fontWeight: FontWeight.w500,
+          fontSize: 12
+      ),
+      labelColor: appOrange,
+
       isScrollable: true,
+      physics: const BouncingScrollPhysics(),
       controller: _tabController,
       onTap: (index) {
         setState(() {
@@ -46,7 +67,7 @@ class _CustomTabBarState extends State<CustomTabBar> with TickerProviderStateMix
             backgroundColor: currentTab == 0 ? appOrange : Colors.white,
             child: ImageIcon(
               const AssetImage('assets/icons/smartphone.png'),
-              color: currentTab == 4 ? Colors.white : Colors.grey,
+              color: currentTab == 0 ? Colors.white : Colors.grey,
               size: iconSize,
             ),
           ),

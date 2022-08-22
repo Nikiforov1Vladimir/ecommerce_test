@@ -87,9 +87,11 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         bottomNavigationBar: Container(
-          height: MediaQuery.of(context).size.height * 0.12,
+          height: MediaQuery.of(context).size.height * 0.08,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20)
+            ),
             color: appBlue
           ),
           child: Padding(

@@ -6,28 +6,30 @@ class AppTheme{
   static ThemeData lightTheme = ThemeData(
 
     scaffoldBackgroundColor: appGrey,
-
     fontFamily: 'Mark-Pro',
+    platform: TargetPlatform.iOS,
 
     tabBarTheme:  TabBarTheme(
       indicatorSize: TabBarIndicatorSize.tab,
+      indicator: const UnderlineTabIndicator(
+        borderSide: BorderSide(
+          color: appOrange,
+          width: 4
+        )
+      ),
       unselectedLabelStyle: const TextStyle(
-        color: appBlue,
-        fontSize: 12,
-        fontWeight: FontWeight.w500
+        color: Colors.grey,
+        fontSize: 18,
+        fontWeight: FontWeight.w400
       ),
       unselectedLabelColor: appBlue,
       labelStyle: const TextStyle(
         color: appBlue,
-        fontWeight: FontWeight.w500,
-        fontSize: 12
+        fontWeight: FontWeight.bold,
+        fontSize: 18
       ),
-      labelColor: appOrange,
-      indicator: const UnderlineTabIndicator(
-          borderSide: BorderSide(
-              color: Colors.transparent
-          )
-      ),
+      labelColor: appBlue,
+
       splashFactory: NoSplash.splashFactory,
       overlayColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
     ),
