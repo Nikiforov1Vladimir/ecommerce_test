@@ -113,6 +113,7 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
                                               AutoSizeText(
                                                     'Galaxy Note $index Ultra',

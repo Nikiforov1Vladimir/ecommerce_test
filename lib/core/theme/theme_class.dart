@@ -9,26 +9,27 @@ class AppTheme{
 
     fontFamily: 'Mark-Pro',
 
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme:  TabBarTheme(
       indicatorSize: TabBarIndicatorSize.tab,
-      indicator: UnderlineTabIndicator(
-        borderSide: BorderSide(
-          color: appOrange,
-          width: 4
-        )
-      ),
-      unselectedLabelStyle: TextStyle(
-        color: Colors.grey,
-        fontSize: 18,
+      unselectedLabelStyle: const TextStyle(
+        color: appBlue,
+        fontSize: 12,
         fontWeight: FontWeight.w400
       ),
       unselectedLabelColor: Colors.grey,
-      labelStyle: TextStyle(
+      labelStyle: const TextStyle(
         color: appBlue,
         fontWeight: FontWeight.bold,
-        fontSize: 18
+        fontSize: 12
       ),
-      labelColor: appBlue
+      labelColor: appOrange,
+      indicator: const UnderlineTabIndicator(
+          borderSide: BorderSide(
+              color: Colors.transparent
+          )
+      ),
+      splashFactory: NoSplash.splashFactory,
+      overlayColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
     ),
 
     appBarTheme: const AppBarTheme(

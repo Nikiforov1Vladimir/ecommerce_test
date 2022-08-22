@@ -3,6 +3,7 @@ import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
 import 'package:ecommerce_test/view/details_screen/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 import 'view/home_page/home_page.dart';
 
 void main() {
@@ -23,13 +24,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: CartScreen(),
+      home: HomePage(),
     );
   }
 }

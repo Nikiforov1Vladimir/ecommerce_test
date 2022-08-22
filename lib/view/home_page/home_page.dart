@@ -10,6 +10,7 @@ import 'package:ecommerce_test/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_test/view/widgets/phone_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'widgets/app_carousel.dart';
@@ -53,8 +54,40 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       onPressed: ()
 
                       // НЕ ЗАБЫТЬ УДАЛИТЬ
-
                       => Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>CartScreen()))
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: TabBar(
+                      controller: _tabController,
+                      indicator: const UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: Colors.transparent
+                        )
+                      ),
+                      splashFactory: NoSplash.splashFactory,
+                      overlayColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
+
+                      tabs: [
+                        Tab(
+                          child: IconButton(
+                            onPressed: (){},
+                            icon: Icon(Icons.phone),
+                          ),
+                        ),
+                        Tab(
+                          icon: CircleAvatar(child: Icon(Icons.phone)),
+                          text: 'Phone',
+                        ),
+                        Tab(
+                          child: Icon(Icons.help),
+                        ),
+                        Tab(
+                          child: Icon(Icons.help),
+                        ),
+                      ],
+                    ),
                   ),
 
                   CustomTextField(
@@ -64,7 +97,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   TitleRow(
                       title: 'Hot Sales',
                       buttonText: 'see more',
-                      onPressed: (){}
+                      onPressed: () => Get.to(() =>CartScreen()),
                   ),
 
                   AppCarousel(),
