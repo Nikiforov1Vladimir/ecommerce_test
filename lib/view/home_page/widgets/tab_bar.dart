@@ -14,6 +14,7 @@ class _CustomTabBarState extends State<CustomTabBar> with TickerProviderStateMix
   int currentTab = 0;
   late TabController _tabController;
   double tabBarHeight = 120;
+  double iconSize = 30;
 
   @override
   void initState() {
@@ -43,7 +44,11 @@ class _CustomTabBarState extends State<CustomTabBar> with TickerProviderStateMix
           icon: CircleAvatar(
             radius: 35,
             backgroundColor: currentTab == 0 ? appOrange : Colors.white,
-            child: Icon(Icons.phone,color: currentTab == 0 ? Colors.white : Colors.grey),
+            child: ImageIcon(
+              const AssetImage('assets/icons/smartphone.png'),
+              color: currentTab == 4 ? Colors.white : Colors.grey,
+              size: iconSize,
+            ),
           ),
           text: 'Phones',
         ),
@@ -52,37 +57,55 @@ class _CustomTabBarState extends State<CustomTabBar> with TickerProviderStateMix
           icon: CircleAvatar(
             radius: 35,
             backgroundColor: currentTab == 1 ? appOrange : Colors.white,
-            child: Icon(Icons.computer,color: currentTab == 1 ? Colors.white : Colors.grey),
+            child: Icon(
+                Icons.computer,
+                color: currentTab == 1 ? Colors.white : Colors.grey,
+              size: iconSize,
+            ),
           ),
           text: 'Computer',
         ),
+
         Tab(
           height: tabBarHeight,
           icon: CircleAvatar(
             radius: 35,
             backgroundColor: currentTab == 2 ? appOrange : Colors.white,
-            child: Icon(Icons.phone,color: currentTab == 2 ? Colors.white : Colors.grey),
+            child: ImageIcon(
+              const AssetImage('assets/icons/heart.png'),
+              color: currentTab == 2 ? Colors.white : Colors.grey,
+              size: iconSize,
+            ),
           ),
-          text: 'Phone',
-
+          text: 'Health',
         ),
+
         Tab(
           height: tabBarHeight,
           icon: CircleAvatar(
             radius: 35,
             backgroundColor: currentTab == 3 ? appOrange : Colors.white,
-            child: Icon(Icons.phone,color: currentTab == 3 ? Colors.white : Colors.grey),
+            child: ImageIcon(
+              const AssetImage('assets/icons/book.png'),
+              color: currentTab == 3 ? Colors.white : Colors.grey,
+              size: iconSize,
+            ),
           ),
-          text: 'Health',
+          text: 'Books',
         ),
+
         Tab(
           height: tabBarHeight,
           icon: CircleAvatar(
             radius: 35,
             backgroundColor: currentTab == 4 ? appOrange : Colors.white,
-            child: Icon(Icons.phone,color: currentTab == 4 ? Colors.white : Colors.grey),
+            child: ImageIcon(
+              const AssetImage('assets/icons/wrench.png'),
+              color: currentTab == 4 ? Colors.white : Colors.grey,
+              size: iconSize,
+            ),
           ),
-          text: 'Health',
+          text: 'Tools',
         )
       ],
     );
