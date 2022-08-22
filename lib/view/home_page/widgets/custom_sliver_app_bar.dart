@@ -14,6 +14,11 @@ class CustomSliverAppBar extends StatefulWidget {
 }
 
 class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
+
+  List<String> firstList = ['Samsung','Iphone','Sony'];
+  List<String> secondList = ['300-500','500-1000'];
+  List<String> thirdList = ['4.5 to 5.5 inches'];
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -35,7 +40,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
             showModalBottomSheet(
               barrierColor: Colors.transparent,
                 context: context,
-                builder: (context) => BottomSheetContent(context)
+                builder: (context) => BottomSheetContent(context,firstList,secondList,thirdList)
             );
           },
           icon: const NIcon(
@@ -51,7 +56,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
   }
 }
 
-Widget BottomSheetContent(BuildContext context){
+Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Object> secondList,List<Object> thirdList){
   return Container(
     height: MediaQuery.of(context).size.height * 0.5,
     padding: EdgeInsets.symmetric(
@@ -99,12 +104,18 @@ Widget BottomSheetContent(BuildContext context){
 
         FilterDropdowmElement(
           title: 'Brand',
+          dropDownList: ['Samsung','Iphone','Sony'],
+          dropDownValue: 'Samsung',
         ),
         FilterDropdowmElement(
           title: 'Price',
+          dropDownList: secondList,
+          dropDownValue: secondList[0],
         ),
         FilterDropdowmElement(
           title: 'Size',
+          dropDownList: thirdList,
+          dropDownValue: thirdList[0],
         ),
 
 

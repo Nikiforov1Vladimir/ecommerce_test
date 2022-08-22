@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 class FilterDropdowmElement extends StatefulWidget {
 
   final String title;
+  Object dropDownValue;
+  final List<Object> dropDownList;
 
-  FilterDropdowmElement({Key? key, required this.title}) : super(key: key);
+  FilterDropdowmElement({Key? key, required this.title, required this.dropDownValue, required this.dropDownList}) : super(key: key);
 
   @override
   State<FilterDropdowmElement> createState() => _FilterDropdowmElementState();
 }
 
 class _FilterDropdowmElementState extends State<FilterDropdowmElement> {
-  String dropDownValue = 'Samsung';
-
-  List<String> dropDownList = ['Samsung','Iphone','Sony'];
 
   @override
   Widget build(BuildContext context) {
@@ -45,20 +44,20 @@ class _FilterDropdowmElementState extends State<FilterDropdowmElement> {
             iconSize: 30,
             underline: const SizedBox(),
             isExpanded: true,
-            value: dropDownValue,
-            items: dropDownList.map((String item) {
+            value: widget.dropDownValue,
+            items: widget.dropDownList.map((Object item) {
               return DropdownMenuItem(
                   value: item,
                   child: Text(
-                    item,
+                    "$item",
                     style: const TextStyle(color: Colors.black,fontSize: 18
                     )
                   ),
               );
             }).toList(),
-            onChanged: (String? value){
+            onChanged: (value){
               setState(() {
-                dropDownValue = value!;
+                widget.dropDownValue = value!;
               });
             }
           ),
