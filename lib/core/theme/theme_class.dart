@@ -53,7 +53,7 @@ class AppTheme{
 
     textTheme: const TextTheme(
 
-      headline1:  TextStyle(
+      headline1: TextStyle(
         color: appBlue,
         fontSize: 25,
         fontWeight: FontWeight.bold
@@ -79,6 +79,18 @@ class AppTheme{
         fontWeight: FontWeight.bold,
         fontSize: 20,
         color: Colors.white
+      ),
+
+      bodyText1: TextStyle(
+        color: Colors.white,
+        fontSize: 15
+      ),
+
+      //bold
+      bodyText2: TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        fontWeight: FontWeight.bold
       )
 
     ),

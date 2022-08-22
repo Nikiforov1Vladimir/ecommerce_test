@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       padding: EdgeInsets.symmetric(
                           horizontal: MediaQuery.of(context).size.width * 0.02
                       ),
-                      child: const PhoneCard(),
+                      child: PhoneCard(index: index),
                     ),
                 childCount: 6,
               ),

@@ -1,6 +1,6 @@
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
-import 'package:ecommerce_test/view/widgets/NIcon.dart';
+import 'package:ecommerce_test/view/widgets/n_icon.dart';
 import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
@@ -117,10 +117,7 @@ Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Objec
           dropDownList: thirdList,
           dropDownValue: thirdList[0],
         ),
-
-
       ],
     ),
-
   );
 }

@@ -16,6 +16,7 @@ class CustomIconButton extends StatelessWidget {
       minWidth: 45,
       height: 45,
       
+      padding: const EdgeInsets.all(0),
       onPressed: onPressed,
 
       elevation: 0,

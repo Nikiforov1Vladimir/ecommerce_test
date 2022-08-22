@@ -19,6 +19,8 @@ dependencies:
   google_nav_bar: any
   buttons_tabbar: any
   badges: any
+  get: any
+  get_storage: any
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +38,6 @@ flutter:
     - assets/icons/
 
   fonts:
-    - family: Schyler
+    - family: Mark-Pro
       fonts:
         - asset: assets/fonts/Mark-Pro.ttf

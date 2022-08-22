@@ -1,4 +1,5 @@
 import 'package:ecommerce_test/core/theme/theme_class.dart';
+import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
 import 'package:ecommerce_test/view/details_screen/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: HomePage(),
+      home: CartScreen(),
     );
   }
 }

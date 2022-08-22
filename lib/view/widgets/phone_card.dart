@@ -4,13 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PhoneCard extends StatefulWidget {
-  const PhoneCard({Key? key}) : super(key: key);
+
+  final int index;
+
+  const PhoneCard({Key? key, required this.index}) : super(key: key);
 
   @override
   State<PhoneCard> createState() => _PhoneCardState();
 }
 
 class _PhoneCardState extends State<PhoneCard> {
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +33,7 @@ class _PhoneCardState extends State<PhoneCard> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
+                      const Expanded(
                         flex: 3,
                         child: Image(
                           image: AssetImage('assets/images/test_phone_image.jpeg'),
