@@ -61,7 +61,7 @@ class AppTheme{
       headline2: TextStyle(
         color: appBlue,
         fontSize: 20,
-        fontWeight: FontWeight.w700
+        fontWeight: FontWeight.w600
       ),
       headline3: TextStyle(
           color: appBlue,

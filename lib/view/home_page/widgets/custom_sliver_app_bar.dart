@@ -4,6 +4,8 @@ import 'package:ecommerce_test/view/widgets/NIcon.dart';
 import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
+import 'filter_dropdown_element.dart';
+
 class CustomSliverAppBar extends StatefulWidget {
   const CustomSliverAppBar({Key? key}) : super(key: key);
 
@@ -36,8 +38,11 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
                 builder: (context) => BottomSheetContent(context)
             );
           },
-          iconSize: 20,
-          icon: NIcon('assets/icons/sort.png'),
+          icon: const NIcon(
+            icon: 'assets/icons/sort.png',
+            color: appOrange,
+            size: 20,
+          ),
           splashRadius: 20,
         ),
         addHorizontalSpace(MediaQuery.of(context).size.width * 0.02)
@@ -48,13 +53,13 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
 
 Widget BottomSheetContent(BuildContext context){
   return Container(
-    height: MediaQuery.of(context).size.height * 0.41,
+    height: MediaQuery.of(context).size.height * 0.5,
     padding: EdgeInsets.symmetric(
       vertical: MediaQuery.of(context).size.height * 0.025,
-      horizontal: MediaQuery.of(context).size.width * 0.08
+      horizontal: MediaQuery.of(context).size.width * 0.06
     ),
 
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(30),
@@ -71,13 +76,36 @@ Widget BottomSheetContent(BuildContext context){
       children: [
 
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomIconButton(
-                onPressed: (){},
-                icon: const Icon(Icons.cancel)
-            )
+              color: appBlue,
+                onPressed: () => Navigator.pop(context),
+                icon: const NIcon(
+                  icon: 'assets/icons/close.png',
+                )
+            ),
+            Text('Filter Options',style: Theme.of(context).textTheme.headline2),
+
+            CustomIconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Text('Done',style: TextStyle(color: Colors.white)
+                )
+            ),
           ],
-        )
+        ),
+
+        addVerticalSpace(MediaQuery.of(context).size.height * 0.03),
+
+        FilterDropdowmElement(
+          title: 'Brand',
+        ),
+        FilterDropdowmElement(
+          title: 'Price',
+        ),
+        FilterDropdowmElement(
+          title: 'Size',
+        ),
 
 
       ],
