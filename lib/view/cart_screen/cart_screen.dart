@@ -71,9 +71,11 @@ class _CartScreenState extends State<CartScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
 
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: appBlue,
-                  borderRadius: BorderRadius.circular(40)
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(40)
+                  )
                 ),
 
                 child: Column(

@@ -30,6 +30,9 @@ class TitleRow extends StatelessWidget {
           Expanded(
             flex: 2,
               child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),
+                ),
                 onPressed: onPressed,
                 child: AutoSizeText(
                     buttonText,

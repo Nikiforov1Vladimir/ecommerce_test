@@ -7,7 +7,6 @@ import 'package:ecommerce_test/view/home_page/widgets/tab_bar.dart';
 import 'package:ecommerce_test/view/home_page/widgets/title_row.dart';
 import 'package:ecommerce_test/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_test/view/widgets/phone_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -102,9 +101,14 @@ class _HomePageState extends State<HomePage> {
               activeColor: Colors.white,
 
               tabs: [
-                GButton(
-                  icon: Icons.home,
+
+                const GButton(
+                  leading: ImageIcon(
+                      AssetImage('assets/icons/home-2.png'),
+                      color: Colors.white
+                  ),
                   text: 'Explore',
+                  icon: Icons.home,
                 ),
 
                 GButton(
@@ -119,14 +123,18 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.shopping_cart,
                 ),
 
-                GButton(
+                const GButton(
                   icon: Icons.favorite_border,
                   text: 'Favorites',
                 ),
 
-                GButton(
-                  icon: Icons.person,
+                const GButton(
+                  leading: ImageIcon(
+                    AssetImage('assets/icons/user.png'),
+                    color: Colors.white,
+                  ),
                   text: 'Profile',
+                  icon: Icons.person,
                 )
               ],
             ),

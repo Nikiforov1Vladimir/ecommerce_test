@@ -6,7 +6,7 @@ class AppTheme{
   static ThemeData lightTheme = ThemeData(
 
     scaffoldBackgroundColor: appGrey,
-    fontFamily: 'Mark-Pro',
+    fontFamily: 'sans-serif',
     platform: TargetPlatform.iOS,
 
     tabBarTheme:  TabBarTheme(
@@ -108,8 +108,7 @@ class AppTheme{
       unselectedIconTheme: IconThemeData(
         color: Colors.white
       ),
-
-    )
+    ),
 
   );
 
