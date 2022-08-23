@@ -21,6 +21,8 @@ dependencies:
   badges: any
   get: any
   get_storage: any
+  http: any
+  flutter_rating_bar: any
 
 dev_dependencies:
   flutter_test:

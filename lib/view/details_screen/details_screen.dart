@@ -4,6 +4,7 @@ import 'package:ecommerce_test/view/details_screen/widgets/details_carousel.dart
 import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
 import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({Key? key}) : super(key: key);
@@ -91,17 +92,43 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: [
-                        AutoSizeText('Galaxy Note 20 Ultra',maxLines: 1,style: Theme.of(context).textTheme.headline3,),
-                        CustomIconButton(
-                          color: appBlue,
-                            onPressed: (){},
-                            icon: const Icon(Icons.favorite_border,size: 20,color: Colors.white,)
-                        )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            AutoSizeText('Galaxy Note 20 Ultra',maxLines: 1,style: Theme.of(context).textTheme.headline3,),
+                            CustomIconButton(
+                              color: appBlue,
+                                onPressed: (){},
+                                icon: const Icon(Icons.favorite_border,size: 20,color: Colors.white,)
+                            )
+                          ],
+                        ),
+
+                        RatingBar(
+
+                          itemSize: 20,
+                          minRating: 1,
+                          maxRating: 5,
+                          initialRating: 3.5,
+                          allowHalfRating: true,
+
+                            ratingWidget: RatingWidget(
+                                half: const Icon(Icons.star_half_outlined,color: Color(0xffffb800)),
+                                full: const Icon(Icons.star,color: Color(0xffffb800),),
+                                empty: const Icon(Icons.star_outline,color: Color(0xffffb800))
+                            ),
+
+                            onRatingUpdate: (value){
+
+                            }
+                        ),
                       ],
                     ),
+
 
                    //Не стал делать TabBarView, т.к ни в т.з, ни в дизайне прилоежиня
                    //не увидел ничего с ним связанного, так что это просто таббат

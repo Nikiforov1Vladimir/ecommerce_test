@@ -71,8 +71,13 @@ class CarouselComponent extends StatelessWidget {
 
                   CustomMaterialButton(
                       onPressed: () {  },
+                      color: Colors.white,
                       child: const Text('Buy Now!',
-                        style: TextStyle(color: Colors.white,fontSize: 14),
+                        style: TextStyle(
+                          color: appBlue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold
+                        ),
                       )
                   )
 

@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ecommerce_test/core/constants/colors.dart';
+import 'package:ecommerce_test/core/utils/utils.dart';
 import 'package:ecommerce_test/view/details_screen/details_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PhoneCard extends StatefulWidget {
 
@@ -18,10 +20,9 @@ class _PhoneCardState extends State<PhoneCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => const DetailsScreen() )),
+      onTap: () => Get.to(()=>DetailsScreen()) ,
       child: Stack(
           children: [
-            //PhoneCard
             Container(
               clipBehavior: Clip.hardEdge,
               height: MediaQuery.of(context).size.height * 0.27,
@@ -48,14 +49,26 @@ class _PhoneCardState extends State<PhoneCard> {
                               children: [
 
                                 //Cost
-                                Text("1,047",style: Theme.of(context).textTheme.headline2),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text("\$1,047",style: Theme.of(context).textTheme.headline2),
+                                    addHorizontalSpace(MediaQuery.of(context).size.width * 0.02),
+                                    const Text('\$1500',style: TextStyle(
+                                        decoration: TextDecoration.lineThrough,
+                                        color: Colors.grey
+                                      )
+                                    )
+                                  ],
+                                ),
 
                                 //Title
                                 const AutoSizeText(
                                   'Samsung Galaxy S20 Ultra',
                                   maxLines: 1,
                                   style: TextStyle(
-                                    fontSize: 10
+                                    fontSize: 10,
+                                    color: appBlue
                                   ),
                                 ),
                               ],
@@ -69,7 +82,7 @@ class _PhoneCardState extends State<PhoneCard> {
                     alignment: const Alignment(1.3, -0.9),
                     child: MaterialButton(
                       onPressed: (){},
-                      color: Colors.grey,
+                      color: Colors.white,
                       elevation: 0,
                       shape: const CircleBorder(),
                       child: const Icon(Icons.favorite_border),
@@ -89,6 +102,6 @@ class _PhoneCardState extends State<PhoneCard> {
 BoxDecoration ContainerDecoration(){
   return BoxDecoration(
     borderRadius: BorderRadius.circular(20),
-    color: Colors.white
+    color: Color(0xffFBFBFB)
   );
 }

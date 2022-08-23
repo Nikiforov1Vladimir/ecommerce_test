@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
 import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import 'widgets/app_carousel.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,17 +28,14 @@ class _HomePageState extends State<HomePage> {
       Scaffold(
         body: CustomScrollView(
           slivers: [
-            CustomSliverAppBar(),
+            const CustomSliverAppBar(),
             SliverToBoxAdapter(
               child: Column(
                 children: [
                   TitleRow(
                       title: 'Select Category',
                       buttonText: 'view all',
-                      onPressed: ()
-
-                      // НЕ ЗАБЫТЬ УДАЛИТЬ
-                      => Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>CartScreen()))
+                      onPressed: (){}
                   ),
 
                   SizedBox(
@@ -48,17 +45,17 @@ class _HomePageState extends State<HomePage> {
 
                   addVerticalSpace(MediaQuery.of(context).size.height * 0.03),
 
-                  CustomTextField(
+                  const CustomTextField(
                     hintText: 'Search',
                   ),
 
                   TitleRow(
                       title: 'Hot Sales',
                       buttonText: 'see more',
-                      onPressed: () => Get.to(() =>CartScreen()),
+                      onPressed: (){}
                   ),
 
-                  AppCarousel(),
+                  const AppCarousel(),
 
                   TitleRow(
                       title: 'Best Seller',
@@ -88,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: Container(
           height: MediaQuery.of(context).size.height * 0.08,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(20)
             ),
@@ -98,7 +95,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.04
             ),
-            child: const GNav(
+            child: GNav(
 
               backgroundColor: Colors.transparent,
               color: Colors.white,
@@ -107,12 +104,19 @@ class _HomePageState extends State<HomePage> {
               tabs: [
                 GButton(
                   icon: Icons.home,
-                  text: 'Home',
+                  text: 'Explore',
                 ),
 
                 GButton(
+                  onPressed: () => Get.to(()=>const CartScreen()),
+                  leading: Badge(
+                    badgeContent: const Text('3'),
+                      child: const ImageIcon(
+                          AssetImage('assets/icons/shopping-bag.png'),
+                          color: Colors.white
+                      )
+                  ),
                   icon: Icons.shopping_cart,
-                  text: 'Cart',
                 ),
 
                 GButton(
