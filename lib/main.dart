@@ -1,6 +1,5 @@
 import 'package:ecommerce_test/core/theme/theme_class.dart';
-import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
-import 'package:ecommerce_test/view/details_screen/details_screen.dart';
+import 'package:ecommerce_test/services/api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -21,12 +20,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,

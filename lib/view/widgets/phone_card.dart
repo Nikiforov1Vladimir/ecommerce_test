@@ -19,63 +19,48 @@ class _PhoneCardState extends State<PhoneCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Get.to(()=>DetailsScreen()) ,
-      child: Stack(
-          children: [
-            Container(
-              clipBehavior: Clip.hardEdge,
-              height: MediaQuery.of(context).size.height * 0.27,
-              width: MediaQuery.of(context).size.width * 0.47,
-              decoration: ContainerDecoration(),
+    return Stack(
+        children: [
+          Ink(
+            height: MediaQuery.of(context).size.height * 0.27,
+            width: MediaQuery.of(context).size.width * 0.47,
+            decoration: ContainerDecoration(),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(20),
+              onTap: () => Get.to(()=>const DetailsScreen()),
               child: Stack(
                 children: [
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Expanded(
-                        flex: 3,
-                        child: Image(
-                          image: AssetImage('assets/images/test_phone_image.jpeg'),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text("\$1,047",style: Theme.of(context).textTheme.headline2),
+                            addHorizontalSpace(MediaQuery.of(context).size.width * 0.02),
+                            const Text('\$1500',style: TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey
+                              )
+                            )
+                          ],
                         ),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
 
-                                //Cost
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text("\$1,047",style: Theme.of(context).textTheme.headline2),
-                                    addHorizontalSpace(MediaQuery.of(context).size.width * 0.02),
-                                    const Text('\$1500',style: TextStyle(
-                                        decoration: TextDecoration.lineThrough,
-                                        color: Colors.grey
-                                      )
-                                    )
-                                  ],
-                                ),
-
-                                //Title
-                                const AutoSizeText(
-                                  'Samsung Galaxy S20 Ultra',
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: appBlue
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                      )
-                    ],
+                        //Title
+                        const AutoSizeText(
+                          'Samsung Galaxy S20 Ultra',
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: appBlue
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
 
                   Align(
@@ -91,10 +76,10 @@ class _PhoneCardState extends State<PhoneCard> {
                 ],
               ),
             ),
+          ),
 
-            //Mark Button
-          ],
-      ),
+          //Mark Button
+        ],
     );
   }
 }
@@ -102,6 +87,12 @@ class _PhoneCardState extends State<PhoneCard> {
 BoxDecoration ContainerDecoration(){
   return BoxDecoration(
     borderRadius: BorderRadius.circular(20),
-    color: Color(0xffFBFBFB)
+      color: const Color(0xffFBFBFB),
+    image: const DecorationImage(
+      alignment: Alignment.topCenter,
+      image: AssetImage(
+          'assets/images/test_phone_image.jpeg',
+      )
+    )
   );
 }

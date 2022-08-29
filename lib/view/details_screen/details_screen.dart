@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
+import 'package:ecommerce_test/core/utils/utils.dart';
 import 'package:ecommerce_test/view/details_screen/widgets/details_carousel.dart';
 import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
 import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
@@ -16,6 +17,7 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateMixin{
 
   late TabController _tabController;
+  double initialRating = 4.5;
 
   @override
   void initState() {
@@ -113,7 +115,7 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                           itemSize: 20,
                           minRating: 1,
                           maxRating: 5,
-                          initialRating: 3.5,
+                          initialRating: initialRating,
                           allowHalfRating: true,
 
                             ratingWidget: RatingWidget(
@@ -154,6 +156,46 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                   ),
 
                   Text('Select color and capacity',style: Theme.of(context).textTheme.headline4),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 2,
+                              itemBuilder: (context,index) => CircleAvatar(
+                                backgroundColor: appOrange,
+                                radius: 20,
+                                child: MaterialButton(
+                                  padding: EdgeInsets.all(0),
+                                  onPressed: () {
+                                    print(index);
+                                  },
+                                ),
+                              ),
+                            shrinkWrap: true,
+                            separatorBuilder: (BuildContext context, int index) => addHorizontalSpace(MediaQuery.of(context).size.width * 0.02)
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: 2,
+                              reverse: true,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context,index) => CircleAvatar(radius: 20,backgroundColor: appOrange,)
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+
                   CustomMaterialButton(
                     verticalPadding: MediaQuery.of(context).size.height * 0.015,
                     onPressed: (){},
