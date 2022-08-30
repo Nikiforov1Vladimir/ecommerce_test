@@ -2,7 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class DetailsCarousel extends StatefulWidget {
-  const DetailsCarousel({Key? key}) : super(key: key);
+
+  final List<String> imagesList;
+
+  const DetailsCarousel({Key? key, required this.imagesList}) : super(key: key);
 
   @override
   State<DetailsCarousel> createState() => _DetailsCarouselState();
@@ -12,12 +15,7 @@ class _DetailsCarouselState extends State<DetailsCarousel> {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-        items: [
-
-          CarouselComponent('assets/images/test_phone_image.jpeg'),
-          CarouselComponent('assets/images/test_phone_image.jpeg'),
-
-        ],
+        items: widget.imagesList.map((e) => CarouselComponent(e)).toList(),
         options: CarouselOptions(
 
           enlargeCenterPage: true,
@@ -37,7 +35,7 @@ Widget CarouselComponent(String image){
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage(image)
+              image: NetworkImage(image)
           ),
           boxShadow: const [
             BoxShadow(

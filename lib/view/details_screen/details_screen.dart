@@ -70,9 +70,11 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
             return Column(
               children: [
 
-                const Expanded(
+                Expanded(
                     flex: 4,
-                    child: DetailsCarousel()
+                    child: DetailsCarousel(
+                      imagesList: snapshot.data!.images,
+                    )
                 ),
 
                 Expanded(
@@ -117,11 +119,10 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                               ),
 
                               RatingBar(
-
                                   itemSize: 20,
                                   minRating: 1,
                                   maxRating: 5,
-                                  initialRating: initialRating,
+                                  initialRating: snapshot.data!.rating,
                                   allowHalfRating: true,
 
                                   ratingWidget: RatingWidget(
@@ -156,8 +157,8 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                             children: [
                               CharacteristicIcon(snapshot.data!.cpu,'assets/icons/cpu.png',context),
                               CharacteristicIcon(snapshot.data!.camera,'assets/icons/camera.png',context),
-                              CharacteristicIcon(snapshot.data!.sd,'assets/icons/ram.png',context),
-                              CharacteristicIcon('','assets/icons/micro-sd.png',context),
+                              CharacteristicIcon(snapshot.data!.ssd,'assets/icons/ram.png',context),
+                              CharacteristicIcon(snapshot.data!.sd,'assets/icons/micro-sd.png',context),
                             ],
                           ),
 
@@ -173,7 +174,7 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
 
                               children: [
                                 Text('Add to Cart',style: Theme.of(context).textTheme.button,),
-                                Text('',style: Theme.of(context).textTheme.button)
+                                Text('${snapshot.data!.price}.00',style: Theme.of(context).textTheme.button)
                               ],
                             ),
                           )
