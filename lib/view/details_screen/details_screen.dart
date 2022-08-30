@@ -1,7 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
+import 'package:ecommerce_test/data/models/phone_details.dart';
+import 'package:ecommerce_test/services/api_client.dart';
 import 'package:ecommerce_test/view/details_screen/widgets/details_carousel.dart';
+import 'package:ecommerce_test/view/splash_screen.dart';
 import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
 import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
 import 'package:flutter/material.dart';
@@ -55,166 +58,139 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                 onPressed: (){},
                 icon: const ImageIcon(AssetImage('assets/icons/shopping-bag.png'),size: 20,color: Colors.white,),
               )
-
             ],
           ),
         ),
       ),
 
-      body: Column(
-        children: [
-          
-          const Expanded(
-              flex: 4,
-              child: DetailsCarousel()
-          ),
+      body: FutureBuilder(
+        future: ApiClient().getPhoneInfo(),
+        builder: (BuildContext context, AsyncSnapshot<PhoneDetails> snapshot) {
+          if(snapshot.hasData) {
+            return Column(
+              children: [
 
-          Expanded(
-            flex: 4,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                  vertical: MediaQuery.of(context).size.height * 0.025
-                ),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      spreadRadius: 10,
-                      blurRadius: 10
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(35),
-                  color: Colors.white,
+                const Expanded(
+                    flex: 4,
+                    child: DetailsCarousel()
                 ),
 
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AutoSizeText('Galaxy Note 20 Ultra',maxLines: 1,style: Theme.of(context).textTheme.headline3,),
-                            CustomIconButton(
-                              color: appBlue,
-                                onPressed: (){},
-                                icon: const Icon(Icons.favorite_border,size: 20,color: Colors.white,)
-                            )
-                          ],
-                        ),
-
-                        RatingBar(
-
-                          itemSize: 20,
-                          minRating: 1,
-                          maxRating: 5,
-                          initialRating: initialRating,
-                          allowHalfRating: true,
-
-                            ratingWidget: RatingWidget(
-                                half: const Icon(Icons.star_half_outlined,color: Color(0xffffb800)),
-                                full: const Icon(Icons.star,color: Color(0xffffb800),),
-                                empty: const Icon(Icons.star_outline,color: Color(0xffffb800))
-                            ),
-
-                            onRatingUpdate: (value){
-
-                            }
-                        ),
-                      ],
-                    ),
-
-
-                   //Не стал делать TabBarView, т.к ни в т.з, ни в дизайне прилоежиня
-                   //не увидел ничего с ним связанного, так что это просто таббат
-                   //без ничего :)
-
-                   TabBar(
-                    controller: _tabController,
-                      tabs: [
-                        Tab(text: 'Shop'),
-                        Tab(text: 'Details'),
-                        Tab(text: 'Features')
-                      ]
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CharacteristicIcon('Exynos 990','assets/icons/cpu.png',context),
-                      CharacteristicIcon('108 + 12 mp','assets/icons/camera.png',context),
-                      CharacteristicIcon('8 GB','assets/icons/ram.png',context),
-                      CharacteristicIcon('256 GB','assets/icons/micro-sd.png',context),
-                    ],
-                  ),
-
-                  Text('Select color and capacity',style: Theme.of(context).textTheme.headline4),
-
-                  Row(
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          child: ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 2,
-                              itemBuilder: (context,index) => CircleAvatar(
-                                backgroundColor: appOrange,
-                                radius: 20,
-                                child: MaterialButton(
-                                  padding: EdgeInsets.all(0),
-                                  onPressed: () {
-                                    print(index);
-                                  },
-                                ),
-                              ),
-                            shrinkWrap: true,
-                            separatorBuilder: (BuildContext context, int index) => addHorizontalSpace(MediaQuery.of(context).size.width * 0.02)
-                          ),
-                        ),
+                Expanded(
+                    flex: 4,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.08,
+                          vertical: MediaQuery.of(context).size.height * 0.025
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: 2,
-                              reverse: true,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context,index) => CircleAvatar(radius: 20,backgroundColor: appOrange,)
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.05),
+                              spreadRadius: 10,
+                              blurRadius: 10
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(35),
+                        color: Colors.white,
+                      ),
+
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  AutoSizeText(snapshot.data!.title,maxLines: 1,style: Theme.of(context).textTheme.headline3,),
+                                  CustomIconButton(
+                                      color: appBlue,
+                                      onPressed: (){},
+                                      icon: const Icon(Icons.favorite_border,size: 20,color: Colors.white,)
+                                  )
+                                ],
+                              ),
+
+                              RatingBar(
+
+                                  itemSize: 20,
+                                  minRating: 1,
+                                  maxRating: 5,
+                                  initialRating: initialRating,
+                                  allowHalfRating: true,
+
+                                  ratingWidget: RatingWidget(
+                                      half: const Icon(Icons.star_half_outlined,color: Color(0xffffb800)),
+                                      full: const Icon(Icons.star,color: Color(0xffffb800),),
+                                      empty: const Icon(Icons.star_outline,color: Color(0xffffb800))
+                                  ),
+
+                                  onRatingUpdate: (value){
+
+                                  }
+                              ),
+                            ],
                           ),
-                        ),
-                      )
-                    ],
-                  ),
 
-                  CustomMaterialButton(
-                    verticalPadding: MediaQuery.of(context).size.height * 0.015,
-                    onPressed: (){},
-                    child: Row(
 
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //Не стал делать TabBarView, т.к ни в т.з, ни в дизайне прилоежиня
+                          //не увидел ничего с ним связанного, так что это просто таббат
+                          //без ничего :)
 
-                      children: [
-                        Text('Add to Cart',style: Theme.of(context).textTheme.button,),
-                        Text('1,500.00',style: Theme.of(context).textTheme.button)
-                      ],
-                    ),
-                  )
-                  ],
-                ),
-              )
-          )
+                          TabBar(
+                              controller: _tabController,
+                              tabs: [
+                                Tab(text: 'Shop'),
+                                Tab(text: 'Details'),
+                                Tab(text: 'Features')
+                              ]
+                          ),
 
-        ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              CharacteristicIcon(snapshot.data!.cpu,'assets/icons/cpu.png',context),
+                              CharacteristicIcon(snapshot.data!.camera,'assets/icons/camera.png',context),
+                              CharacteristicIcon(snapshot.data!.sd,'assets/icons/ram.png',context),
+                              CharacteristicIcon('','assets/icons/micro-sd.png',context),
+                            ],
+                          ),
+
+                          Text('Select color and capacity',style: Theme.of(context).textTheme.headline4),
+
+
+                          CustomMaterialButton(
+                            verticalPadding: MediaQuery.of(context).size.height * 0.015,
+                            onPressed: (){},
+                            child: Row(
+
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                              children: [
+                                Text('Add to Cart',style: Theme.of(context).textTheme.button,),
+                                Text('',style: Theme.of(context).textTheme.button)
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                )
+
+              ],
+          );}
+          if(snapshot.hasError) return SplashScreen();
+          else return Center(
+            child: CircularProgressIndicator(
+              color: appOrange,
+            )
+          );
+        },
       ),
 
     );

@@ -62,4 +62,6 @@ class PhoneDetails {
     "ssd": ssd,
     "title": title,
   };
+
+
 }
