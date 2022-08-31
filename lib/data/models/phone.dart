@@ -83,7 +83,7 @@ class HomeStore {
 
   factory HomeStore.fromJson(Map<String, dynamic> json) => HomeStore(
     id: json["id"],
-    isNew: json["is_new"] == null ? null : json["is_new"],
+    isNew: json["is_new"] == null ? false : json["is_new"],
     title: json["title"],
     subtitle: json["subtitle"],
     picture: json["picture"],

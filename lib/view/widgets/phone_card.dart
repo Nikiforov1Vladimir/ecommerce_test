@@ -7,9 +7,14 @@ import 'package:get/get.dart';
 
 class PhoneCard extends StatefulWidget {
 
-  final int index;
+  bool loadingCard;
+  String title;
+  int priceWithoutDiscount;
+  int discountPrice;
+  String picture;
+  bool isFavorites;
 
-  const PhoneCard({Key? key, required this.index}) : super(key: key);
+  PhoneCard({Key? key,required this.loadingCard, required this.isFavorites, required this.title, required this.priceWithoutDiscount, required this.discountPrice, required this.picture}) : super(key: key);
 
   @override
   State<PhoneCard> createState() => _PhoneCardState();
@@ -24,13 +29,18 @@ class _PhoneCardState extends State<PhoneCard> {
           Ink(
             height: MediaQuery.of(context).size.height * 0.27,
             width: MediaQuery.of(context).size.width * 0.47,
-            decoration: ContainerDecoration(),
-            child: InkWell(
+            decoration: ContainerDecoration(widget.picture),
+            child: widget.loadingCard ? const Center(
+              child: CircularProgressIndicator(
+                color: appBlue,
+              ),
+            )
+                :
+            InkWell(
               borderRadius: BorderRadius.circular(20),
               onTap: () => Get.to(()=>const DetailsScreen()),
               child: Stack(
                 children: [
-
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: Column(
@@ -40,9 +50,9 @@ class _PhoneCardState extends State<PhoneCard> {
                       children: [
                         Row(
                           children: [
-                            Text("\$1,047",style: Theme.of(context).textTheme.headline2),
+                            Text("\$${widget.priceWithoutDiscount}",style: Theme.of(context).textTheme.headline2),
                             addHorizontalSpace(MediaQuery.of(context).size.width * 0.02),
-                            const Text('\$1500',style: TextStyle(
+                            Text('\$${widget.discountPrice}',style: TextStyle(
                                 decoration: TextDecoration.lineThrough,
                                 color: Colors.grey
                               )
@@ -51,8 +61,8 @@ class _PhoneCardState extends State<PhoneCard> {
                         ),
 
                         //Title
-                        const AutoSizeText(
-                          'Samsung Galaxy S20 Ultra',
+                        AutoSizeText(
+                          widget.title,
                           maxLines: 1,
                           style: TextStyle(
                             fontSize: 10,
@@ -66,11 +76,18 @@ class _PhoneCardState extends State<PhoneCard> {
                   Align(
                     alignment: const Alignment(1.3, -0.9),
                     child: MaterialButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        setState(() {
+                          widget.isFavorites = !widget.isFavorites;
+                        });
+                      },
                       color: Colors.white,
                       elevation: 0,
                       shape: const CircleBorder(),
-                      child: const Icon(Icons.favorite_border),
+                      child: Icon(
+                          Icons.favorite_border,
+                        color: widget.isFavorites ? Colors.red : Colors.grey,
+                      ),
                     )
                   )
                 ],
@@ -84,15 +101,13 @@ class _PhoneCardState extends State<PhoneCard> {
   }
 }
 
-BoxDecoration ContainerDecoration(){
+BoxDecoration ContainerDecoration(String image){
   return BoxDecoration(
     borderRadius: BorderRadius.circular(20),
       color: const Color(0xffFBFBFB),
-    image: const DecorationImage(
+    image: DecorationImage(
       alignment: Alignment.topCenter,
-      image: AssetImage(
-          'assets/images/test_phone_image.jpeg',
-      )
+      image: NetworkImage(image)
     )
   );
 }

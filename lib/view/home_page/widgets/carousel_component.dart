@@ -53,6 +53,7 @@ class CarouselComponent extends StatelessWidget {
 
                   Text(
                     title,
+                    maxLines: 1,
                     style: const TextStyle(
                       fontSize: 25,
                       color: Colors.white,
@@ -91,7 +92,7 @@ class CarouselComponent extends StatelessWidget {
               child: Image(
                 height: MediaQuery.of(context).size.height,
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/test_carousel_image.jpeg'),
+                image: NetworkImage(image),
               )
           )
         ],

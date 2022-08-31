@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommerce_test/data/models/phone.dart';
 import 'package:ecommerce_test/data/models/phone_details.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,4 +14,13 @@ class ApiClient{
     
     return PhoneDetails.fromJson(phoneInfo);
   }
+
+  Future<Phone> getHomePageInfo() async{
+    final response = await http.get(Uri.parse('https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175'));
+
+    var phone = jsonDecode(response.body);
+
+    return Phone.fromJson(phone);
+  }
+
 }
