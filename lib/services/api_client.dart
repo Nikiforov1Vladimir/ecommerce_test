@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommerce_test/data/models/basket.dart';
 import 'package:ecommerce_test/data/models/phone.dart';
 import 'package:ecommerce_test/data/models/phone_details.dart';
 import 'package:http/http.dart' as http;
@@ -21,6 +22,14 @@ class ApiClient{
     var phone = jsonDecode(response.body);
 
     return Phone.fromJson(phone);
+  }
+
+  Future<Basket> getBasket() async{
+    final response = await http.get(Uri.parse('https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149'));
+
+    var basket = jsonDecode(response.body);
+
+    return Basket.fromJson(basket);
   }
 
 }

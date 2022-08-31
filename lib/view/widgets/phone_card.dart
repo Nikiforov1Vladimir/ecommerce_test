@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
 import 'package:ecommerce_test/view/details_screen/details_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,11 +39,11 @@ class _PhoneCardState extends State<PhoneCard> {
                 :
             InkWell(
               borderRadius: BorderRadius.circular(20),
-              onTap: () => Get.to(()=>const DetailsScreen()),
+              onTap: () =>Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>const DetailsScreen())),
               child: Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -85,8 +86,8 @@ class _PhoneCardState extends State<PhoneCard> {
                       elevation: 0,
                       shape: const CircleBorder(),
                       child: Icon(
-                          Icons.favorite_border,
-                        color: widget.isFavorites ? Colors.red : Colors.grey,
+                        widget.isFavorites ? Icons.favorite : Icons.favorite_border,
+                        color: const Color(0xffff6d4e)
                       ),
                     )
                   )
@@ -104,7 +105,7 @@ class _PhoneCardState extends State<PhoneCard> {
 BoxDecoration ContainerDecoration(String image){
   return BoxDecoration(
     borderRadius: BorderRadius.circular(20),
-      color: const Color(0xffFBFBFB),
+      color: Colors.white,
     image: DecorationImage(
       alignment: Alignment.topCenter,
       image: NetworkImage(image)

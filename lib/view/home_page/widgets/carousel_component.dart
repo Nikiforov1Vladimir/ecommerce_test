@@ -51,7 +51,7 @@ class CarouselComponent extends StatelessWidget {
                   ),
 
 
-                  Text(
+                  AutoSizeText(
                     title,
                     maxLines: 1,
                     style: const TextStyle(

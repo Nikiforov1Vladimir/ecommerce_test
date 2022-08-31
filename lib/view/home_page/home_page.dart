@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
+import 'package:ecommerce_test/data/models/basket.dart';
 import 'package:ecommerce_test/data/models/phone.dart';
 import 'package:ecommerce_test/services/api_client.dart';
 import 'package:ecommerce_test/view/cart_screen/cart_screen.dart';
@@ -10,6 +11,7 @@ import 'package:ecommerce_test/view/home_page/widgets/tab_bar.dart';
 import 'package:ecommerce_test/view/home_page/widgets/title_row.dart';
 import 'package:ecommerce_test/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_test/view/widgets/phone_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -198,13 +200,21 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 GButton(
-                  onPressed: () => Get.to(()=>const CartScreen()),
-                  leading: Badge(
-                    badgeContent: const Text('3'),
-                      child: const ImageIcon(
-                          AssetImage('assets/icons/shopping-bag.png'),
-                          color: Colors.white
-                      )
+                  onPressed: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => const CartScreen())),
+                  leading: FutureBuilder(
+                    future: ApiClient().getBasket(),
+                    builder: (context,AsyncSnapshot<Basket> snapshot) {
+                      if(snapshot.hasData){
+                        return Badge(
+                          badgeContent: Text('${snapshot.data!.basket.length}'),
+                          badgeColor: appOrange,
+                          child: const ImageIcon(AssetImage('assets/icons/shopping-bag.png'),color: Colors.white,),
+                        );
+                      }
+                      else{
+                        return const ImageIcon(AssetImage('assets/icons/shopping-bag.png'),color: Colors.white,);
+                      }
+                    }
                   ),
                   icon: Icons.shopping_cart,
                 ),

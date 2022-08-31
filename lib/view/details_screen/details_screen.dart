@@ -185,12 +185,15 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
 
               ],
           );}
-          if(snapshot.hasError) return SplashScreen();
-          else return Center(
+          if(snapshot.hasError) {
+            return const SplashScreen();
+          } else {
+            return const Center(
             child: CircularProgressIndicator(
               color: appOrange,
             )
           );
+          }
         },
       ),
 

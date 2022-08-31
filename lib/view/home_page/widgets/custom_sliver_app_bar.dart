@@ -58,7 +58,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
 
 Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Object> secondList,List<Object> thirdList){
   return Container(
-    height: MediaQuery.of(context).size.height * 0.5,
+    height: MediaQuery.of(context).size.height * 0.6,
     padding: EdgeInsets.symmetric(
       vertical: MediaQuery.of(context).size.height * 0.025,
       horizontal: MediaQuery.of(context).size.width * 0.06
@@ -78,6 +78,7 @@ Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Objec
     ),
 
     child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 
         Row(
