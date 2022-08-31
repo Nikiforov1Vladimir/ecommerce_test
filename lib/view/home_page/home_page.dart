@@ -13,9 +13,7 @@ import 'package:ecommerce_test/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_test/view/widgets/phone_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'widgets/app_carousel.dart';
 import 'widgets/carousel_component.dart';
 
 class HomePage extends StatefulWidget {
@@ -200,7 +198,10 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 GButton(
-                  onPressed: () => Navigator.of(context).push(CupertinoPageRoute(builder: (context) => const CartScreen())),
+                  onPressed: () => Navigator.of(context).push(CupertinoPageRoute(
+                      builder: (context) => const CartScreen()
+                    )
+                  ),
                   leading: FutureBuilder(
                     future: ApiClient().getBasket(),
                     builder: (context,AsyncSnapshot<Basket> snapshot) {

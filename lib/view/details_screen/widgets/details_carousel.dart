@@ -15,21 +15,23 @@ class _DetailsCarouselState extends State<DetailsCarousel> {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-        items: widget.imagesList.map((e) => CarouselComponent(e)).toList(),
+        items: widget.imagesList.map((e) => CarouselComponent(e,context)).toList(),
         options: CarouselOptions(
 
-          enlargeCenterPage: true,
-          aspectRatio: 9/8,
-          viewportFraction: 0.7
+            enlargeCenterPage: true,
+            aspectRatio: 9/8,
+            viewportFraction: 0.7
 
         )
     );
   }
 }
 
-Widget CarouselComponent(String image){
+Widget CarouselComponent(String image,context){
   return Padding(
-    padding: const EdgeInsets.all(16.0),
+    padding: EdgeInsets.symmetric(
+        vertical: MediaQuery.of(context).size.height * 0.02
+    ),
     child: Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),

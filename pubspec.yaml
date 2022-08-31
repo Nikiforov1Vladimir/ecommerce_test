@@ -19,8 +19,6 @@ dependencies:
   google_nav_bar: any
   buttons_tabbar: any
   badges: any
-  get: any
-  get_storage: any
   http: any
   flutter_rating_bar: any
 

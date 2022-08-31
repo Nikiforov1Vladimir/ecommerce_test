@@ -5,14 +5,20 @@ import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
 import 'package:flutter/material.dart';
 
 class CarouselComponent extends StatelessWidget {
-
   final String image;
   final String title;
   final String subTitle;
   final bool isProductNew;
   final VoidCallback? onButtonPressed;
 
-  const CarouselComponent({Key? key, required this.image, required this.isProductNew, required this.title, required this.subTitle, this.onButtonPressed}) : super(key: key);
+  const CarouselComponent(
+      {Key? key,
+        required this.image,
+        required this.isProductNew,
+        required this.title,
+        required this.subTitle,
+        this.onButtonPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,16 @@ class CarouselComponent extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       clipBehavior: Clip.hardEdge,
-      decoration: ContainerDecoration(image),
+      decoration: BoxDecoration(
+          color: const Color(0xff101010),
+          borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          alignment: Alignment.centerRight,
+            fit: BoxFit.cover,
+            image: NetworkImage(image)
+        )
+      
+      ),
       child: Row(
         children: [
           Expanded(
@@ -29,86 +44,64 @@ class CarouselComponent extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 0.06,
                   top: MediaQuery.of(context).size.height * 0.03,
-                bottom: MediaQuery.of(context).size.height * 0.03
-              ),
+                  bottom: MediaQuery.of(context).size.height * 0.03),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-
-                  isProductNew ?
-                  const CircleAvatar(
+                  isProductNew
+                      ? const CircleAvatar(
                     radius: 20,
                     backgroundColor: appOrange,
                     child: Center(
-                      child: Text('New',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),),
+                      child: Text(
+                        'New',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 10),
+                      ),
                     ),
                   )
-                  :
-                  const CircleAvatar(
+                      : const CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.transparent,
                   ),
-
-
                   AutoSizeText(
                     title,
                     maxLines: 1,
                     style: const TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold
-                    ),
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
-
                   AutoSizeText(
                     subTitle,
                     style: const TextStyle(
                         fontSize: 11,
                         color: Colors.white,
-                        fontWeight: FontWeight.w500
-                    ),
+                        fontWeight: FontWeight.w500),
                   ),
-
                   CustomMaterialButton(
-                      onPressed: () {  },
+                      onPressed: () {},
                       color: Colors.white,
-                      child: const Text('Buy Now!',
+                      child: const Text(
+                        'Buy Now!',
                         style: TextStyle(
-                          color: appBlue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold
-                        ),
-                      )
-                  )
-
+                            color: appBlue,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                      ))
                 ],
               ),
             ),
           ),
-
           Expanded(
-            flex: 6,
-              child: Image(
-                height: MediaQuery.of(context).size.height,
-                fit: BoxFit.cover,
-                image: NetworkImage(image),
+              flex: 6,
+              child: Padding(
+                  padding: const EdgeInsets.only(left: 30.0),
               )
           )
         ],
       ),
     );
   }
-}
-
-BoxDecoration ContainerDecoration(String image){
-  return BoxDecoration(
-    color: const Color(0xff101010),
-    borderRadius: BorderRadius.circular(20),
-    // image: DecorationImage(
-    //   fit: BoxFit.cover,
-    //     image: AssetImage(image)
-    // )
-
-  );
 }

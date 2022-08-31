@@ -20,7 +20,8 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateMixin{
 
   late TabController _tabController;
-  double initialRating = 4.5;
+  int selectedColor = 0;
+  int selectedCapacity = 0;
 
   @override
   void initState() {
@@ -145,7 +146,7 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
 
                           TabBar(
                               controller: _tabController,
-                              tabs: [
+                              tabs: const [
                                 Tab(text: 'Shop'),
                                 Tab(text: 'Details'),
                                 Tab(text: 'Features')
@@ -163,6 +164,77 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                           ),
 
                           Text('Select color and capacity',style: Theme.of(context).textTheme.headline4),
+
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.04,
+
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 4,
+                                    child: ListView.separated(
+                                      scrollDirection: Axis.horizontal,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: snapshot.data!.color.length,
+                                      separatorBuilder: (context,index) {
+                                        return SizedBox(
+                                          width: MediaQuery.of(context).size.width * 0.04,
+                                        );
+                                      },
+                                      itemBuilder: (context,index){
+                                        return GestureDetector(
+                                          onTap:(){
+                                            setState(() {
+                                              selectedColor = index;
+                                            });
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundColor: _colorFromHex(snapshot.data!.color[index]),
+                                            child: selectedColor == index ? const Icon(Icons.done,color: Colors.white) : const SizedBox(),
+                                          ),
+                                        );
+                                      },
+                                    )
+                                ),
+                                Expanded(
+                                  flex: 5,
+                                    child: ListView.separated(
+                                        scrollDirection: Axis.horizontal,
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        itemBuilder: (context,index) =>
+                                            MaterialButton(
+                                                onPressed: (){
+                                                  setState(() {
+                                                    selectedCapacity = index;
+                                                  });
+                                                },
+                                              color: selectedCapacity == index ? appOrange : Colors.transparent,
+                                              elevation: 0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10)
+                                              ),
+                                              minWidth: MediaQuery.of(context).size.width * 0.2,
+                                              child: Text(
+                                                  '${snapshot.data!.capacity[index]} GB',
+                                                style: TextStyle(
+                                                  color: selectedCapacity == index ? Colors.white : Colors.grey,
+                                                  fontSize: selectedCapacity == index ? 12 : 10
+                                                ),
+                                              ),
+                                        ),
+                                        separatorBuilder: (context,index) {
+                                          return SizedBox(
+                                            width: MediaQuery.of(context).size.width * 0.04,
+                                          );
+                                        },
+                                        itemCount: snapshot.data!.capacity.length
+                                    )
+                                )
+
+                              ],
+                            ),
+                          ),
 
 
                           CustomMaterialButton(
@@ -207,20 +279,25 @@ Widget CharacteristicIcon(String title,String icon,BuildContext context){
       vertical: MediaQuery.of(context).size.height * 0.01
     ),
     width: MediaQuery.of(context).size.width * 0.2,
-    height: MediaQuery.of(context).size.height * 0.1,
+    height: MediaQuery.of(context).size.height * 0.08,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ImageIcon(
           AssetImage(icon,),
-          size: 35,
+          size: 30,
           color: Colors.grey,
         ),
         Text(
             title,
-            style: const TextStyle(color: Colors.grey,fontSize: 12)
+            style: const TextStyle(color: Colors.grey,fontSize: 12,fontWeight: FontWeight.w400)
         )
       ],
     ),
   );
+}
+
+Color _colorFromHex(String hexColor) {
+  final hexCode = hexColor.replaceAll('#', '');
+  return Color(int.parse('FF$hexCode', radix: 16));
 }

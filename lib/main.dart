@@ -1,8 +1,6 @@
 import 'package:ecommerce_test/core/theme/theme_class.dart';
-import 'package:ecommerce_test/services/api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/route_manager.dart';
 import 'view/home_page/home_page.dart';
 
 void main() {
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
