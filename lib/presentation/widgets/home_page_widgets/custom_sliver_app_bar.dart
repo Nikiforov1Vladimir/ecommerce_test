@@ -1,7 +1,7 @@
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
-import 'package:ecommerce_test/view/widgets/n_icon.dart';
-import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_icon_button.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/n_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'filter_dropdown_element.dart';
@@ -84,7 +84,7 @@ Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Objec
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomIconButton(
+            AppMaterialIconButton(
               color: appBlue,
                 onPressed: () => Navigator.pop(context),
                 icon: const NIcon(
@@ -93,7 +93,7 @@ Widget BottomSheetContent(BuildContext context,List<Object> firstList,List<Objec
             ),
             Text('Filter Options',style: Theme.of(context).textTheme.headline2),
 
-            CustomIconButton(
+            AppMaterialIconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: const Text('Done',style: TextStyle(color: Colors.white)
                 )

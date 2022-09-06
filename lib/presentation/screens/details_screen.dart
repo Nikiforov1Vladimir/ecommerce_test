@@ -1,14 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
-import 'package:ecommerce_test/core/utils/utils.dart';
-import 'package:ecommerce_test/data/models/phone_details.dart';
-import 'package:ecommerce_test/services/api_client.dart';
-import 'package:ecommerce_test/view/details_screen/widgets/details_carousel.dart';
-import 'package:ecommerce_test/view/splash_screen.dart';
-import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
-import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
+import 'package:ecommerce_test/domain/models/phone_details.dart';
+import 'package:ecommerce_test/data/api/services/api_client.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_icon_button.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_material_button.dart';
+import 'package:ecommerce_test/presentation/widgets/details_screen_widgets/details_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import 'splash_screen.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({Key? key}) : super(key: key);
@@ -49,13 +49,13 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomIconButton(
+              AppMaterialIconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 color: appBlue,
                 icon: const Icon(Icons.arrow_back_ios_new_rounded,size: 20,color: Colors.white,),
               ),
               Text('Product Details',style: Theme.of(context).textTheme.headline2,),
-              CustomIconButton(
+              AppMaterialIconButton(
                 onPressed: (){},
                 icon: const ImageIcon(AssetImage('assets/icons/shopping-bag.png'),size: 20,color: Colors.white,),
               )
@@ -111,7 +111,7 @@ class _DetailsScreenState extends State<DetailsScreen> with TickerProviderStateM
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   AutoSizeText(snapshot.data!.title,maxLines: 1,style: Theme.of(context).textTheme.headline3,),
-                                  CustomIconButton(
+                                  AppMaterialIconButton(
                                       color: appBlue,
                                       onPressed: (){},
                                       icon: const Icon(Icons.favorite_border,size: 20,color: Colors.white,)

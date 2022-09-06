@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
-import 'package:ecommerce_test/core/utils/utils.dart';
-import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_material_button.dart';
 import 'package:flutter/material.dart';
 
 class CarouselComponent extends StatelessWidget {

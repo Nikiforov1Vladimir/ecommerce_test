@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:ecommerce_test/data/models/basket.dart';
-import 'package:ecommerce_test/data/models/phone.dart';
-import 'package:ecommerce_test/data/models/phone_details.dart';
+import 'package:ecommerce_test/domain/models/basket.dart';
+import 'package:ecommerce_test/domain/models/phone.dart';
+import 'package:ecommerce_test/domain/models/phone_details.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient{
@@ -31,5 +31,4 @@ class ApiClient{
 
     return Basket.fromJson(basket);
   }
-
 }

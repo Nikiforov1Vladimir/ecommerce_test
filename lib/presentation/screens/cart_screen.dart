@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:ecommerce_test/core/utils/utils.dart';
-import 'package:ecommerce_test/data/models/basket.dart';
-import 'package:ecommerce_test/services/api_client.dart';
-import 'package:ecommerce_test/view/widgets/custom_icon_button.dart';
-import 'package:ecommerce_test/view/widgets/custom_material_button.dart';
+import 'package:ecommerce_test/domain/models/basket.dart';
+import 'package:ecommerce_test/data/api/services/api_client.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_icon_button.dart';
+import 'package:ecommerce_test/presentation/widgets/app_widgets/custom_material_button.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
@@ -28,12 +28,12 @@ class _CartScreenState extends State<CartScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomIconButton(
+              AppMaterialIconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 color: appBlue,
                 icon: const Icon(Icons.arrow_back_ios_new_rounded,size: 20,color: Colors.white,),
               ),
-              CustomIconButton(
+              AppMaterialIconButton(
                 onPressed: (){},
                 icon: const Icon(Icons.location_on_outlined,color: Colors.white),
               )
