@@ -20,11 +20,32 @@ class AppTheme{
     ),
 
     textTheme: const TextTheme(
+      headline1: TextStyle(
+        color: AppColors.black,
+        fontSize: 28,
+        fontWeight: FontWeight.w600,
+      ),
       headline2: TextStyle(
         color: AppColors.black,
         fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+      headline3: TextStyle(
+        color: AppColors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyText1: TextStyle(
+        color: AppColors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
+      button: TextStyle(
+        color: AppColors.white,
+        fontSize: 18,
         fontWeight: FontWeight.w600,
       )
+
     ),
 
   );

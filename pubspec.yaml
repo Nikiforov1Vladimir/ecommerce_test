@@ -25,6 +25,7 @@ dependencies:
   smooth_page_indicator: any
   cached_network_image: any
   freezed_annotation: ^2.2.0
+  readmore: any
 
 dev_dependencies:
   flutter_test:
