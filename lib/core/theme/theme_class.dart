@@ -5,109 +5,26 @@ class AppTheme{
 
   static ThemeData lightTheme = ThemeData(
 
-    scaffoldBackgroundColor: appGrey,
-    fontFamily: 'sans-serif',
-    platform: TargetPlatform.iOS,
-
-    tabBarTheme:  TabBarTheme(
-      indicatorSize: TabBarIndicatorSize.tab,
-      indicator: const UnderlineTabIndicator(
-        borderSide: BorderSide(
-          color: appOrange,
-          width: 4
-        )
-      ),
-      unselectedLabelStyle: const TextStyle(
-        color: Colors.grey,
-        fontSize: 18,
-        fontWeight: FontWeight.w400
-      ),
-      unselectedLabelColor: appBlue,
-      labelStyle: const TextStyle(
-        color: appBlue,
-        fontWeight: FontWeight.bold,
-        fontSize: 18
-      ),
-      labelColor: appBlue,
-
-      splashFactory: NoSplash.splashFactory,
-      overlayColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
-    ),
-
-    appBarTheme: const AppBarTheme(
-      color: Colors.transparent,
-      elevation: 0,
-      centerTitle: true,
-      titleTextStyle: TextStyle(
-        color: appBlue,
-        fontSize: 18,
-        fontWeight: FontWeight.w600
-      ),
-      iconTheme: IconThemeData(
-        color: appOrange,
-      )
-    ),
-
-    textButtonTheme:  TextButtonThemeData(
-      style: ButtonStyle(
-        overlayColor: MaterialStateColor.resolveWith((states) => Colors.black.withOpacity(0.05)),
-      )
+    colorScheme: const ColorScheme(
+        brightness: Brightness.light,
+        primary: AppColors.white,
+        onPrimary: AppColors.black,
+        secondary: AppColors.purple,
+        onSecondary: Colors.white,
+        error: Colors.redAccent,
+        onError: Colors.white,
+        background: AppColors.white,
+        onBackground: AppColors.black,
+        surface: Colors.white,
+        onSurface: Colors.white
     ),
 
     textTheme: const TextTheme(
-
-      headline1: TextStyle(
-        color: appBlue,
-        fontSize: 25,
-        fontWeight: FontWeight.bold
-      ),
       headline2: TextStyle(
-        color: appBlue,
+        color: AppColors.black,
         fontSize: 20,
-        fontWeight: FontWeight.w600
-      ),
-      headline3: TextStyle(
-          color: appBlue,
-          fontSize: 24,
-          fontWeight: FontWeight.w600
-      ),
-      headline4: TextStyle(
-        color: appBlue,
-        fontSize: 16,
-        fontWeight: FontWeight.w600
-      ),
-
-      //bold bodyText for buttons
-      button: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
-        color: Colors.white
-      ),
-
-      bodyText1: TextStyle(
-        color: Colors.white,
-        fontSize: 15
-      ),
-
-      //bold
-      bodyText2: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.w600,
       )
-
-    ),
-
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedIconTheme: IconThemeData(
-        color: appOrange
-      ),
-      selectedLabelStyle: TextStyle(
-        color: appOrange
-      ),
-      unselectedIconTheme: IconThemeData(
-        color: Colors.white
-      ),
     ),
 
   );

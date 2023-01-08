@@ -1,8 +1,8 @@
 import 'package:ecommerce_test/core/theme/theme_class.dart';
+import 'package:ecommerce_test/ui/screens/home_screen/home_screen.dart';
+import 'package:ecommerce_test/ui/screens/product_screen/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'presentation/screens/home_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: const HomePage(),
+      home: const ProductScreen(),
     );
   }
 }
