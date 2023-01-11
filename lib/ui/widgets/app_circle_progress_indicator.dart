@@ -1,3 +1,4 @@
+import 'package:ecommerce_test/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppCircleProgressIndicator extends StatelessWidget {
@@ -8,7 +9,7 @@ class AppCircleProgressIndicator extends StatelessWidget {
     return Center(
       child: CircularProgressIndicator(
         color: Theme.of(context).colorScheme.secondary,
-        strokeWidth: 4,
+        strokeWidth: 5,
       ),
     );
   }

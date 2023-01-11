@@ -4,6 +4,7 @@ import 'package:ecommerce_test/domain/models/product.dart';
 import 'package:ecommerce_test/domain/models/review.dart';
 import 'package:ecommerce_test/ui/screens/product_screen/widgets/rating_row.dart';
 import 'package:ecommerce_test/ui/screens/product_screen/widgets/review_card.dart';
+import 'package:ecommerce_test/ui/widgets/app_circle_progress_indicator.dart';
 import 'package:ecommerce_test/ui/widgets/sliver_app_bar/sliver_app_bar_background.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
@@ -18,7 +19,6 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
-    ApiClient().getProduct(1);
     return Scaffold(
       body: FutureBuilder(
         future: ApiClient().getProduct(1),
@@ -29,6 +29,8 @@ class _ProductScreenState extends State<ProductScreen> {
                 CustomScrollView(
                   slivers: [
                     SliverAppBar(
+                      centerTitle: true,
+                      expandedHeight: 350,
                       toolbarHeight: 350,
                       flexibleSpace: SliverAppBarBackground(
                         images: snapshot.data!.images,
@@ -124,9 +126,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                       ),
                                     );
                                   }else{
-                                    return Center(child: CircularProgressIndicator(
-                                      color: Theme.of(context).colorScheme.secondary,
-                                    ));
+                                    return const AppCircleProgressIndicator();
                                   }
                                 }
                             )
@@ -139,25 +139,67 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: MaterialButton(
-                    onPressed: (){},
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
                     height: 70,
-                    minWidth: MediaQuery.of(context).size.width,
-                    color: Theme.of(context).colorScheme.secondary,
-                    child: Text(
-                      'Proceed to pay ${snapshot.data!.price - (snapshot.data!.discount ?? 0)}\$',
-                      style: Theme.of(context).textTheme.button,
-                    )
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
+                      border: const Border.symmetric(
+                        horizontal: BorderSide(
+                          color: AppColors.grey,
+                          width: 1
+                        )
+                      )
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 25
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                  '\$${snapshot.data!.price - (snapshot.data!.discount ?? 0)}0',
+                                  style: Theme.of(context).textTheme.headline2!.copyWith(
+                                    fontWeight: FontWeight.w700
+                                  )
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                '\$${snapshot.data!.price}0',
+                                style: Theme.of(context).textTheme.headline3!.copyWith(
+                                    decoration: TextDecoration.lineThrough,
+                                    color: AppColors.grey
+                                ),
+                              )
+                            ],
+                          ),
+
+                          MaterialButton(
+                            onPressed: (){},
+                            height: 40,
+                            color: Theme.of(context).colorScheme.secondary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)
+                            ),
+                            child: Text(
+                              'To cart',
+                              style: Theme.of(context).textTheme.button,
+                            )
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 )
               ],
             );
           }{
-            return Center(
-              child: CircularProgressIndicator(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            );
+            return const AppCircleProgressIndicator();
           }
         },
       ),

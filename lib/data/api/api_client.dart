@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ecommerce_test/domain/models/product.dart';
 import 'package:ecommerce_test/domain/models/review.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class ApiClient{
 
@@ -19,7 +20,5 @@ class ApiClient{
     var data = await jsonDecode(response.body) as List<dynamic>;
     return data.map((e) => Review.fromJson(e)).toList();
   }
-
-
 
 }

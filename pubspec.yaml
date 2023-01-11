@@ -14,6 +14,7 @@ dependencies:
 
   #various
 
+  flutter_svg: any
   auto_size_text: ^3.0.0
   carousel_slider: ^4.2.1
   badges: ^2.0.3
